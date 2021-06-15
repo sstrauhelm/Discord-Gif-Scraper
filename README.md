@@ -1,6 +1,6 @@
 # Discord-Gif-Scraper
 A script for saving all of the gifs favorited on Discord.
-By default this script works based on Linux directories, but all you'd need to do to make it work with Windows is to change on line.
+By default this script works based on Linux directories. I'm sure it's not difficult to convert for Windows usage.
 
 As of right now this script is not multi-threaded.
 
