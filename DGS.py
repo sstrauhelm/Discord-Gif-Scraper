@@ -102,6 +102,12 @@ for gif_url in normal_gif_urls:
 
     create_gif(data, file_name)
 
+total_gifs = len(normal_gif_urls) + len(tenor_gif_ids)
+
+if total_gifs == 0:
+    print("You have no gifs saved.")
+    sys.exit(0)
+
 #Tenor gif section
 for i in range(0,len(tenor_gif_ids)-1,50):
     #In order to download gifs from tenor by ID, one has to first make a query with their API and take the gif's actual link from there.
@@ -114,5 +120,6 @@ for i in range(0,len(tenor_gif_ids)-1,50):
         data = requests.get(result['media'][0]['gif']['url']).content
 
         create_gif(data, file_name)
-
+        
+print(f"Now downloading {total_gifs} gif{'s' if total_gifs > 1 else ''}...")
 print("Done!")
