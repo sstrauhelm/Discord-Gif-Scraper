@@ -73,6 +73,7 @@ except IOError as e:
 
 j_data = json.loads(db.get(gif_key).decode('utf-8','ignore')[1:])
 db.close()
+rmtree(dp_copy)
 
 gif_list = j_data['_state']['favorites']
 
