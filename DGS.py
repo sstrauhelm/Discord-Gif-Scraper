@@ -28,8 +28,12 @@ elif os_type == "Windows":
 gif_key = b'_https://discord.com\x00\x01GIFFavoritesStore'
 out_folder = 'Discord gifs'
 
-#Writes a gif to the output directory making sure that it isn't creating duplicates via md5 comparisons
-#while also handling name collisions.
+#Checks if a name collision exists, if so then checks if the files are identical via md5 hashsum.
+#If not then a new file is written with a random uuid as its filename, otherwise the loop continues as normal.
+
+#Possible future additions include database indexing of the gifs' hashes, their names, and paths in order to provide
+#more efficient downloading later om, as well as to provide some means to resume from the middle of a download.
+#Oh, and multithreading for several gifs to be downloaded at once.
 def create_gif(data, file_name):
     if os.path.exists(file_name):
         new_file_hash = hashlib.md5()
