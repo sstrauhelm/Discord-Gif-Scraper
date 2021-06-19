@@ -121,7 +121,7 @@ for i in range(0,len(tenor_gif_ids)-1,50):
     tenor_bs = requests.get(f'https://g.tenor.com/v1/gifs?ids={gif_id_sublist}&media_filter=minimal&key={tenor_API_token}')
     tenor_json_bs = json.loads(tenor_bs.content)
     for result in tenor_json_bs['results']:
-        file_name = name_pat.search(result['itemurl']).group(0)
+        file_name = name_pat.search(result['itemurl']).group(0) + ".gif"
         data = requests.get(result['media'][0]['gif']['url']).content
 
         create_gif(data, file_name)
